@@ -1,0 +1,38 @@
+version: '3'
+services:
+  node1:
+    build: .
+    environment:
+      - PORT=8080
+      - NODE_ENV=development
+    ports:
+      - "8080:8080"
+      - "9229:9229"
+    command: "npm start"
+    volumes:
+      - c:\\uploads:/usr/src/app/uploads
+      - node_modules:/usr/src/app/node_modules
+      - uploads:/usr/src/app/images
+      - c:\\Users\\manic\\exercise\\express-docker:/usr/src/app
+  nginx:
+    build:
+      context: ./
+      dockerfile: nginx-alpine
+    ports:
+      - "80:80"
+    command: ["nginx", "-g", "daemon off;"]
+
+  redis:
+    image: redis:4.0.11-alpine
+
+  arangodb:
+    image: arangodb
+    environment:
+      - ARANGO_NO_AUTH=1
+    volumes:
+      - "dbdata:/var/lib/arangodb3"
+
+volumes:
+  dbdata:
+  node_modules:
+  uploads:
