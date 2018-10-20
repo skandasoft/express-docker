@@ -2,12 +2,13 @@
 	"name": "@skandasoft/ts-template",
 	"version": "1.0.0",
 	"description": "",
-	"main": "dist/app.js",
+	"main": "app.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"compile": "babel --source-maps -w ./src --out-dir ./dist --extensions \".ts,.tsx\" --copy-files",
 		"watch": "tsc -w",
-		"start": "nodemon --legacy-watch --watch ./ --inspect=0.0.0.0:9229 --nolazy"
+		"start": "nodemon --legacy-watch --watch ./ --inspect=0.0.0.0:9229 --nolazy",
+		"local": "nodemon --watch ./ dist/app.js"
 	},
 	"keywords": [],
 	"author": "SkandaSoft <skandasoftinc@gmail.com> (http://skandasoft.com/)",

@@ -6,5 +6,5 @@ app.get("/index", (req, res, next) => {
 	logger.info(JSON.stringify(req.cookies));
 	res.header("Content-Type", "text/html");
 	res.cookie("cookieName", Math.random().toString(), { maxAge: 90000, httpOnly: true });
-	res.render("index", { title: "Express TS" });
+	res.render("index", { title: "Express TS  " });
 });

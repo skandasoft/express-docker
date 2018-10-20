@@ -1,14 +1,17 @@
 FROM node:10.10-alpine
 RUN npm i -g nodemon
 
-# ENV Host 127.0.0.1
-ENV PORT 80
-ENV NODE_ENV development
-EXPOSE 80
+# # ENV Host 127.0.0.1
+# ENV PORT 80
+# ENV NODE_ENV development
+# EXPOSE 80
 
 RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/logs
+RUN mkdir -p /usr/src/uploads
 WORKDIR /usr/src/app
 
+COPY ./dist /usr/src/app/
 COPY ./package.json /usr/src/app/
 RUN npm i -g -f
 

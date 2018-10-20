@@ -15,12 +15,14 @@ dotenv.config();
 
 // require("dotenv").config();
 
-const reloadify = require("@skandasoft/reloadify")(__dirname);
-
 const app = express();
 export default app;
 
-app.use(reloadify);
+if (process.env.NODE_ENV !== "production") {
+	const reloadify = require("@skandasoft/reloadify")(__dirname);
+	logger.info("DIR Name" + __dirname);
+	app.use(reloadify);
+}
 
 // const Youch = require("youch");
 import { default as Youch } from "youch";

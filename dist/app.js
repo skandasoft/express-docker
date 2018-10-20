@@ -29,12 +29,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 dotenv.config(); // require("dotenv").config();
 
-var reloadify = require("@skandasoft/reloadify")(__dirname);
-
 var app = (0, _express.default)();
 var _default = app;
 exports.default = _default;
-app.use(reloadify); // const Youch = require("youch");
+
+if (process.env.NODE_ENV !== "production") {
+  var reloadify = require("@skandasoft/reloadify")(__dirname);
+
+  _logger.default.info("DIR Name" + __dirname);
+
+  app.use(reloadify);
+} // const Youch = require("youch");
+
 
 var port = process.env.PORT || 4040;
 app.set("view engine", "ejs");

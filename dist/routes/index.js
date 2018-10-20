@@ -16,7 +16,7 @@ _app.default.get("/index", function (req, res, next) {
     httpOnly: true
   });
   res.render("index", {
-    title: "Express TS"
+    title: "Express TS  "
   });
 });
 //# sourceMappingURL=index.js.map
